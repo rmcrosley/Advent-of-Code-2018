@@ -5,27 +5,23 @@
 
 #include <iostream>
 #include <vector>
+#include <fstream>
 using std::getline;
 using std::string;
 using std::cin;
 using std::vector;
 using std::cout;
 using std::endl;
+using std::ifstream;
 
 
 
 
-vector<int> organizeInput(string s) {
+vector<int> organizeInput(vector<string> s) {
     vector<int> ret;
     
     for(int i = 0; i < s.size(); ++i) {
-        if(s[i] == '-') {
-            ret.push_back((s[i+1] - 48) * -1);
-            i = i+1;
-        }
-        else if(s[i] != ',' && s[i] != '+' && s[i] != ' ') {
-            ret.push_back(s[i] - 48);
-        }
+        ret.push_back(std::stoi(s[i]));
     }
     
     return ret;
@@ -37,20 +33,36 @@ vector<int> organizeInput(string s) {
 
 
 int main() {
-    string input;
+    string inputFilePath;
+    string line;
+    vector<string> input;
     vector<int> frequency;
     int ans = 0;
+    ifstream file;
+    
     
     cout << "Input: ";
-    getline(cin, input);
+    getline(cin, inputFilePath);
     
+    file.open(inputFilePath);
+    
+    if (!file) {
+        cout << "Unable to open file" << endl;
+        return 0;
+    }
+    
+    while(file >> line) {
+        input.push_back(line);
+    }
+    
+    file.close();
     
     frequency = organizeInput(input);
-    
+
     for(int i = 0; i < frequency.size(); i++) {
         ans += frequency[i];
     }
-    cout << ans << endl;
-    
+    cout << "Answer: " << ans << endl;
+
     return 0;
 }
