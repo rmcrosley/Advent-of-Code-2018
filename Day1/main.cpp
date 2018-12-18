@@ -17,38 +17,31 @@ using std::ifstream;
 
 
 
-vector<int> organizeInput(vector<string> s) {
+int organizeInput(vector<string> s) {
     vector<int> ret;
+    int ans = 0;
     
     for(int i = 0; i < s.size(); ++i) {
         ret.push_back(std::stoi(s[i]));
     }
     
-    return ret;
+    for(int i = 0; i < ret.size(); i++) {
+        ans += ret[i];
+    }
+    
+    return ans;
 }
 
-
-
-
-
-
-int main() {
-    string inputFilePath;
+vector<string> readInInput(string inputFilePath) {
     string line;
     vector<string> input;
-    vector<int> frequency;
-    int ans = 0;
     ifstream file;
-    
-    
-    cout << "Input: ";
-    getline(cin, inputFilePath);
     
     file.open(inputFilePath);
     
     if (!file) {
         cout << "Unable to open file" << endl;
-        return 0;
+        exit(1);
     }
     
     while(file >> line) {
@@ -57,12 +50,28 @@ int main() {
     
     file.close();
     
-    frequency = organizeInput(input);
+    return input;
+}
 
-    for(int i = 0; i < frequency.size(); i++) {
-        ans += frequency[i];
-    }
-    cout << "Answer: " << ans << endl;
+
+
+
+int main() {
+    string inputFilePath;
+    vector<string> input;
+    vector<int> frequency;
+    int ans1 = 0;
+
+    
+    cout << "Input: ";
+    getline(cin, inputFilePath);
+    
+    input = readInInput(inputFilePath);
+    
+    ans1 = organizeInput(input);
+
+    cout << endl;
+    cout << "Answer to Part 1: " << ans1 << endl;
 
     return 0;
 }
