@@ -1,4 +1,7 @@
-
+// Rachel Crosley
+// Day1
+// Advent of Code 2018
+// Day1Functions.cpp
 
 #include "Day1Functions.hpp"
 #include <iostream>

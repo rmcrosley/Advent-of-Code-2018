@@ -1,4 +1,7 @@
-
+// Rachel Crosley
+// Day1
+// Advent of Code 2018
+// Day1Functions.hpp
 
 #ifndef Day1Functions_hpp
 #define Day1Functions_hpp
