@@ -1,6 +1,7 @@
 // Rachel Crosley
 // Day 2
 // Advent of Code 2018
+// Day2Functions.hpp
 
 
 #ifndef Day2Functions_hpp
@@ -14,9 +15,9 @@ using std::string;
 
 vector<string> readInInput(string);
 
+int checksum(vector<string>);
 
-
-
+int checkEachString(string);
 
 
 
