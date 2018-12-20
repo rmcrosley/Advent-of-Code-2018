@@ -11,6 +11,7 @@
 #include <vector>
 using std::vector;
 using std::string;
+using std::pair;
 
 
 vector<string> readInInput(string);
@@ -19,11 +20,7 @@ int checksum(vector<string>);
 
 int checkEachString(string);
 
-
-
-
-
-
+string compareIds(vector<string> &);
 
 
 

@@ -93,8 +93,30 @@ int checkEachString(string s) {
 }
 
 
-
-
+string compareIds(vector<string> & s) {
+    string id1 = "";
+    string id2 = "";
+    string ret = "";
+    
+    
+    for(int k = 0; k < s.size(); k++) {
+        for(int j = k+1; j < s.size(); j++) {
+            id1 = s[k];
+            id2 = s[j];
+            for(int i = 0; i < id1.size(); ++i) {
+                if(id1[i] == id2[i]) {
+                    ret += id1[i];
+                }
+            }
+            if(ret.size() == id1.size()-1) {
+                return ret;
+            }
+            ret = "";
+        }
+    }
+    
+    return ret;
+}
 
 
 
